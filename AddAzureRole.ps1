@@ -2,6 +2,9 @@
 # This script reads the contents of a CSV file defined by the $DataFile varable.
 # It will create an Azure account for the email address for the subscription ID.
 #
+# NOTE: You must log into Azure using the 'Login-AzureRmAccount' cmdlet prior to
+# running this script.
+#
 
 # CSV file containing team data
 $TeamDataFile = 'C:\tmp\Data.csv'

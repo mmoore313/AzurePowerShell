@@ -59,7 +59,7 @@ ForEach ($Sub in $MemberList) {
     
     # Remove all resources from the active
     Write-Host "   Removing all resource groups for Subscription ID $Subscription"
-    Get-AzureRmResourceGroup | Remove-AzureRmResourceGroup -Verbose -Force -ErrorAction Inquire
+    Get-AzureRmResourceGroup | Remove-AzureRmResourceGroup -Verbose -Confirm -ErrorAction Inquire
     
     }
 Write-Host "   Done."

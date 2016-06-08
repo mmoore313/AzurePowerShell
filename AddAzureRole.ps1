@@ -28,11 +28,11 @@ ForEach ($Member in $MemberList) {
 
 
     # Select the Subscription ID
-    Select-AzureSubscription -SubscriptionId $Subscription
+    Select-AzureSubscription -SubscriptionId $Subscription -ErrorAction Inquire
 
     # Assign the role to the address
     "   Setting $SignInName to $Subscription as $Role"
-    New-AzureRmRoleAssignment -SignInName $SignInName -RoleDefinitionName $Role
+    New-AzureRmRoleAssignment -SignInName $SignInName -RoleDefinitionName $Role -ErrorAction Stop
 
     # Returns the current Azure role assignments
     Get-AzureRmRoleAssignment -SignInName $SignInName

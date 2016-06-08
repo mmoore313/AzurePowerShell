@@ -48,7 +48,7 @@ ForEach ($Member in $MemberList) {
 Write-Host "***** ***** ***** ***** ***** *****"
 Write-Host "WARNING: This will remove ALL Resource Groups"
 Write-Host "         from ALL Subscriptions in the file:"
-Write-Host "         $DataFile"
+Write-Host "         $TeamDataFile"
 Write-Host "***** ***** ***** ***** ***** *****"
 Pause
 

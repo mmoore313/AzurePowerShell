@@ -2,8 +2,11 @@
 # This script reads the contents of a CSV file defined by the $DataFile varable.
 # It will create an Azure account for the email address for the subscription ID.
 #
-# NOTE: You must log into Azure using the 'Login-AzureRmAccount' cmdlet prior to
-# running this script.
+# # NOTE: You must run the follwing cmdlets before executing this script. 
+#      Add-AzureAccount 
+#           --AND-- 
+#      Add-AzureRmAccount (or Login-AzureRmAccount)
+#
 #
 
 # CSV file containing team data
@@ -31,7 +34,7 @@ ForEach ($Member in $MemberList) {
     Select-AzureSubscription -SubscriptionId $Subscription -ErrorAction Inquire
 
     # Assign the role to the address
-    "   Setting $SignInName to $Subscription as $Role"
+    Write-Host "   Setting $SignInName to $Subscription as $Role"
     New-AzureRmRoleAssignment -SignInName $SignInName -RoleDefinitionName $Role -ErrorAction Stop
 
     # Returns the current Azure role assignments

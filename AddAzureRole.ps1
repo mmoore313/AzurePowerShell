@@ -32,6 +32,10 @@ ForEach ($Member in $MemberList) {
 
     # Select the Subscription ID
     Select-AzureSubscription -SubscriptionId $Subscription -ErrorAction Inquire
+    
+    # Set the Subscription context (previously, not necessary)
+    Write-Host "   Setting Active Subscription Context: $Subscription"
+    Set-AzureRmContext -SubscriptionId $Subscription -ErrorAction Stop
 
     # Assign the role to the address
     Write-Host "   Setting $SignInName to $Subscription as $Role"

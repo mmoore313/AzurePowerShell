@@ -35,7 +35,11 @@ ForEach ($Member in $MemberList) {
     # Select the Subscription ID
     Write-Host "   Setting the Subscription ID to $Subscription"
     Select-AzureSubscription -SubscriptionId $Subscription -ErrorAction Stop
-    
+
+    # Set the ARM Subscription context
+    Write-Host "   Setting Active Subscription Context: $Subscription"
+    Set-AzureRmContext -SubscriptionId $Subscription -ErrorAction Stop
+
     # Remove the role for the address
     Write-Host "   Removing $SignInName as $Role from $Subscription"
     Remove-AzureRmRoleAssignment -RoleDefinitionName $role -SignInName $email -Force -ErrorAction Inquire

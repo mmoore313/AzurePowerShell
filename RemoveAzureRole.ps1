@@ -42,7 +42,7 @@ ForEach ($Member in $MemberList) {
 
     # Remove the role for the address
     Write-Host "   Removing $SignInName as $Role from $Subscription"
-    Remove-AzureRmRoleAssignment -RoleDefinitionName $role -SignInName $email -Force -ErrorAction Inquire
+    Remove-AzureRmRoleAssignment -RoleDefinitionName $role -SignInName $SignInName -Force -ErrorAction Inquire
     
     # Returns the current Azure role assignments (Should be blank)
     Get-AzureRmRoleAssignment -SignInName $SignInName

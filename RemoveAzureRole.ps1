@@ -1,4 +1,4 @@
-﻿#
+#
 # This script reads the contents of a CSV file defined by the $DataFile varable.
 # It removes RBAC roles from the assosciate subscription ID and removes ALL resources
 # from the subscription.

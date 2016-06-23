@@ -65,6 +65,7 @@ ForEach ($Sub in $MemberList) {
     Write-Host "   Setting Active Subscription Context: $Subscription"
     Set-AzureRmContext -SubscriptionId $Subscription -ErrorAction Stop
     
+    $Resources = Get-AzureRmResourceGroup
     If (-Not [string]::IsNullOrEmpty($Resources)) {
 
         # Remove all resources from the active

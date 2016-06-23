@@ -57,13 +57,22 @@ Write-Host "***** ***** ***** ***** ***** *****"
 Pause
 
 ForEach ($Sub in $MemberList) {
+    # Select the Subscription ID
+    Write-Host "   Setting the Subscription ID to $Subscription"
+    Select-AzureSubscription -SubscriptionId $Subscription -ErrorAction Stop
+
     # Set the Subscription context (required for the removal process)
     Write-Host "   Setting Active Subscription Context: $Subscription"
     Set-AzureRmContext -SubscriptionId $Subscription -ErrorAction Stop
     
-    # Remove all resources from the active
-    Write-Host "   Removing all resource groups for Subscription ID $Subscription"
-    Get-AzureRmResourceGroup | Remove-AzureRmResourceGroup -Verbose -Confirm -ErrorAction Inquire
-    
+    If (-Not [string]::IsNullOrEmpty($Resources)) {
+
+        # Remove all resources from the active
+        Write-Host "   Removing all resource groups for Subscription ID $Subscription"
+        Get-AzureRmResourceGroup | Remove-AzureRmResourceGroup -Verbose -Force -ErrorAction Inquire
+        }
+
+        else { Write-Host "No resources for $Subscription"
+         }
     }
 Write-Host "   Done."
